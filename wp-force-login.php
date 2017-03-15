@@ -70,7 +70,7 @@ add_action('template_redirect', 'v_forcelogin');
 
 
 function my_forcelogin_whitelist( $whitelist ) {
-	$whitelist[] = network_site_url( '/calendar/' );
+	$whitelist[] = network_site_url( '/goldcustomer/calendar/' );
 	global $NOVIS_CSI_CMP_TASK;
 	$NOVIS_CSI_CMP_TASK->write_log ( $whitelist );
 	return $whitelist;

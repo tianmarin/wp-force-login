@@ -67,17 +67,10 @@ function v_forcelogin() {
   }
 }
 add_action('template_redirect', 'v_forcelogin');
-/**
- * Filter Force Login to allow exceptions for specific URLs.
- *
- * @return array An array of URLs. Must be absolute.
- **/
 
-function v_forcelogin_whitelist( $whitelist ) {
-	$whitelist = array(
-		'http://34.193.88.238/goldcustomer/calendar/',
-	);
-  return $whitelist;
+
+function my_forcelogin_whitelist( $whitelist ) {
+	$whitelist[] = site_url( '/goldcustomer/calendar/' );
+	return $whitelist;
 }
-
 add_filter('v_forcelogin_whitelist', 'my_forcelogin_whitelist', 10, 1);

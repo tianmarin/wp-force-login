@@ -70,7 +70,7 @@ add_action('template_redirect', 'v_forcelogin');
 
 
 function my_forcelogin_whitelist( $whitelist ) {
-	$whitelist[] = site_url( '/goldcustomer/calendar/' );
+	$whitelist[] = network_site_url( '/calendar/' );
 	return $whitelist;
 }
 add_filter('v_forcelogin_whitelist', 'my_forcelogin_whitelist', 10, 1);

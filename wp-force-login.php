@@ -49,9 +49,7 @@ function v_forcelogin() {
 
     // Apply filters
     $bypass = apply_filters ( 'v_forcelogin_bypass', false );
-    $whitelist = apply_filters( 'v_forcelogin_whitelist', array(
-		'http://34.193.88.238/goldcustomer/calendar/',
-	) );
+    $whitelist = apply_filters( 'v_forcelogin_whitelist', array() );
     $redirect_url = apply_filters( 'v_forcelogin_redirect', $url );
 
     // Redirect visitors
@@ -69,3 +67,17 @@ function v_forcelogin() {
   }
 }
 add_action('template_redirect', 'v_forcelogin');
+/**
+ * Filter Force Login to allow exceptions for specific URLs.
+ *
+ * @return array An array of URLs. Must be absolute.
+ **/
+
+function v_forcelogin_whitelist( $whitelist ) {
+	$whitelist = array(
+		'http://34.193.88.238/goldcustomer/calendar/',
+	);
+  return $whitelist;
+}
+
+add_filter('v_forcelogin_whitelist', 'my_forcelogin_whitelist', 10, 1);

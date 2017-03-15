@@ -52,10 +52,6 @@ function v_forcelogin() {
     $whitelist = apply_filters( 'v_forcelogin_whitelist', array() );
     $redirect_url = apply_filters( 'v_forcelogin_redirect', $url );
 
-	global $NOVIS_CSI_CMP_TASK;
-	$NOVIS_CSI_CMP_TASK->write_log ( $whitelist );
-	$NOVIS_CSI_CMP_TASK->write_log ( $url );
-
     // Redirect visitors
     if ( preg_replace('/\?.*/', '', $url) != preg_replace('/\?.*/', '', wp_login_url()) && !in_array($url, $whitelist) && !$bypass ) {
       wp_safe_redirect( wp_login_url( $redirect_url ), 302 ); exit();

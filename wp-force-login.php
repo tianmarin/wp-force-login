@@ -49,7 +49,9 @@ function v_forcelogin() {
 
     // Apply filters
     $bypass = apply_filters ( 'v_forcelogin_bypass', false );
-    $whitelist = apply_filters( 'v_forcelogin_whitelist', array() );
+    $whitelist = apply_filters( 'v_forcelogin_whitelist', array(
+		'http://34.193.88.238/goldcustomer/calendar',
+	) );
     $redirect_url = apply_filters( 'v_forcelogin_redirect', $url );
 
     // Redirect visitors

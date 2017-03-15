@@ -52,6 +52,9 @@ function v_forcelogin() {
     $whitelist = apply_filters( 'v_forcelogin_whitelist', array() );
     $redirect_url = apply_filters( 'v_forcelogin_redirect', $url );
 
+	global $NOVIS_CSI_CMP_TASK;
+	$NOVIS_CSI_CMP_TASK->write_log ( $whitelist );
+
     // Redirect visitors
     if ( preg_replace('/\?.*/', '', $url) != preg_replace('/\?.*/', '', wp_login_url()) && !in_array($url, $whitelist) && !$bypass ) {
       wp_safe_redirect( wp_login_url( $redirect_url ), 302 ); exit();
@@ -71,8 +74,6 @@ add_action('template_redirect', 'v_forcelogin');
 
 function my_forcelogin_whitelist( $whitelist ) {
 	$whitelist[] = network_site_url( '/goldcustomer/calendar/' );
-	global $NOVIS_CSI_CMP_TASK;
-	$NOVIS_CSI_CMP_TASK->write_log ( $whitelist );
 	return $whitelist;
 }
 add_filter('v_forcelogin_whitelist', 'my_forcelogin_whitelist', 10, 1);

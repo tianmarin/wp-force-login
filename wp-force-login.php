@@ -71,7 +71,7 @@ add_action('template_redirect', 'v_forcelogin');
 
 function my_forcelogin_whitelist( $whitelist ) {
 	$whitelist[] = network_site_url( '/goldcustomer/calendar/' );
-	$whitelist[] = network_site_url( '/wp-admin/admin-ajax.php' );
+//	$whitelist[] = network_site_url( '/wp-admin/admin-ajax.php' );
 	return $whitelist;
 }
 add_filter('v_forcelogin_whitelist', 'my_forcelogin_whitelist', 10, 1);
